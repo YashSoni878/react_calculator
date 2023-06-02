@@ -30,7 +30,7 @@ function reducer(state, {type, payload}){
         currentOperand: `${state.currentOperand || ""}${payload.digit}`
       }
 
-      case ACTIONS.CHOOSE_OPERATION:
+    case ACTIONS.CHOOSE_OPERATION:
         if(state.currentOperand == null && state.previousOperand == null){
           return state;
         }
@@ -93,6 +93,8 @@ function reducer(state, {type, payload}){
           operation: null,
           currentOperand: evaluate(state)
         }
+      default:
+          // 
   }
 }
 
@@ -119,7 +121,10 @@ function evaluate({currentOperand, previousOperand, operation}){
 
     case "/":
       computation = prev / current;
-      break;      
+      break; 
+      
+    default:
+        // 
   }
 
   return computation.toString();
